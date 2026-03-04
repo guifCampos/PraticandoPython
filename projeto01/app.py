@@ -1,6 +1,6 @@
 import os
 
-
+#define o nome do programa
 def nome_programa(): 
     print(
     """
@@ -27,8 +27,9 @@ def nome_programa():
     """
     )
 
+
+#limpa o terminal deixando apenas a mensagem do print
 def encerra_app():
-    #limpa o terminal deixando apenas a mensagem do print
     os.system("cls")
     print("encerrando app")
 
@@ -46,4 +47,11 @@ elif theChosen == 4:
     encerra_app()
 else:
     print("selecione uma opção válida")
-    
+
+
+
+def main():
+    nome_programa()
+
+if __name__ == __main__:
+    main()
