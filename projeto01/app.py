@@ -1,3 +1,5 @@
+import os
+
 print(
 """
 
@@ -23,6 +25,23 @@ print(
 """
 )
 
-theChosen = input("selecione uma opcao: ")
-print(f"\na opcao selecionada foi a {theChosen}")
+def encerra_app():
+    #limpa o terminal deixando apenas a mensagem do print
+    os.system("cls")
+    print("encerrando app")
 
+
+theChosen = int(input("selecione uma opcao: "))
+
+
+if theChosen == 1:
+    print("Vvc escolheu cadastrar um restaurante")
+elif theChosen == 2:
+    print("vc escolheu listar os restaurantes")
+elif theChosen == 3:
+    print("vc escolheu ativar um restaurante")
+elif theChosen == 4:
+    encerra_app()
+else:
+    print("selecione uma opção válida")
+    
