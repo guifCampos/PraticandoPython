@@ -18,12 +18,6 @@ def nome_programa():
     ██╔══██╗██║░░██║░░░██║░░░██╔══██║██╔══╝░░██║░░██║██║░░╚██╗██║░░██║
     ██████╦╝╚█████╔╝░░░██║░░░██║░░██║██║░░░░░╚█████╔╝╚██████╔╝╚█████╔╝
     ╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░░░░░╚════╝░░╚═════╝░░╚════╝░
-    ==================================================================
-    1.Cadastrar restaurante
-    2.Listar restaurantes
-    3.Ativar restaurante
-    4.Sair
-    ==================================================================
     """
     )
 
@@ -62,10 +56,11 @@ def encerra_app():
     print("encerrando app")
 
 
+#contem todos as funcoes deste arquivo (app.py)
 def main():
     nome_programa()
     exibe_opcao()
     selecina_opcao()
 
-if __name__ == __main__:
+if __name__ == '__main__':
     main()
