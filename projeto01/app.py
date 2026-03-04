@@ -27,7 +27,7 @@ def nome_programa():
     """
     )
 
-
+#exibe as opcoes de entrada do programa
 def exibe_opcao():
     print("""
     ==================================================================
@@ -38,6 +38,23 @@ def exibe_opcao():
     ==================================================================
     """)
 
+#entrada de uma opcao no programa
+def selecina_opcao():
+    theChosen = int(input("selecione uma opcao: "))
+
+
+    if theChosen == 1:
+        print("Vvc escolheu cadastrar um restaurante")
+    elif theChosen == 2:
+        print("vc escolheu listar os restaurantes")
+    elif theChosen == 3:
+        print("vc escolheu ativar um restaurante")
+    elif theChosen == 4:
+        encerra_app()
+    else:
+        print("selecione uma opção válida")
+        return selecina_opcao()
+
 
 #limpa o terminal deixando apenas a mensagem do print
 def encerra_app():
@@ -45,25 +62,10 @@ def encerra_app():
     print("encerrando app")
 
 
-theChosen = int(input("selecione uma opcao: "))
-
-
-if theChosen == 1:
-    print("Vvc escolheu cadastrar um restaurante")
-elif theChosen == 2:
-    print("vc escolheu listar os restaurantes")
-elif theChosen == 3:
-    print("vc escolheu ativar um restaurante")
-elif theChosen == 4:
-    encerra_app()
-else:
-    print("selecione uma opção válida")
-
-
-
 def main():
     nome_programa()
     exibe_opcao()
+    selecina_opcao()
 
 if __name__ == __main__:
     main()
