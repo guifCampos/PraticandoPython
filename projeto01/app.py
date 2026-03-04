@@ -28,6 +28,17 @@ def nome_programa():
     )
 
 
+def exibe_opcao():
+    print("""
+    ==================================================================
+    1.Cadastrar restaurante
+    2.Listar restaurantes
+    3.Ativar restaurante
+    4.Sair
+    ==================================================================
+    """)
+
+
 #limpa o terminal deixando apenas a mensagem do print
 def encerra_app():
     os.system("cls")
@@ -52,6 +63,7 @@ else:
 
 def main():
     nome_programa()
+    exibe_opcao()
 
 if __name__ == __main__:
     main()
