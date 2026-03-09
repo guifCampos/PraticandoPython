@@ -21,29 +21,31 @@ def nome_programa():
     """
     )
 
+sabores = []
+
 #exibe as opcoes de entrada do programa
 def exibe_opcao():
     print("""
     ==================================================================
-    1.Cadastrar restaurante
-    2.Listar restaurantes
-    3.Ativar restaurante
+    1.Cadastrar novo sabor
+    2.Listar sabores
+    3.Ativar sabor
     4.Sair
     ==================================================================
     """)
 
 #entrada de uma opcao no programa
 def selecina_opcao():
+    #try except e um metodo para tratamento de erro
     try:
         theChosen = int(input("selecione uma opcao: "))
 
-
         if theChosen == 1:
-            print("vc escolheu cadastrar um restaurante")
+            cadastrar_novo_sabor()
         elif theChosen == 2:
-            print("vc escolheu listar os restaurantes")
+            print("vc escolheu listar os sabores")
         elif theChosen == 3:
-            print("vc escolheu ativar um restaurante")
+            print("vc escolheu ativar um sabor")
         elif theChosen == 4:
             encerra_app()
         else:
@@ -56,10 +58,20 @@ def encerra_app():
     os.system("cls")
     print("encerrando app")
 
-
+#caso entrada seja uma opcao invalida, exibe a mensagem de invalidez e ao teclar ENTER volta para o menu
 def opcao_invalida():
     print("opcao invalida")
     input("tecle qualquer coisa para voltar\n" + "\n")
+    main()
+
+#esta funcao adciona um novo item a lista de sabores
+def cadastrar_novo_sabor():
+    os.system("cls")
+    print("cadastro de novo sabor\n")
+    nome_do_sabor = input("insira o nome do novo sabor: ")
+    sabores.append(nome_do_sabor)
+    print(f"sabor {nome_do_sabor} adicionado ao cardapio!")
+    input("digite qualquer tecla para voltar ao menu")
     main()
 
 #contem todos as funcoes deste arquivo (app.py)
@@ -67,6 +79,7 @@ def main():
     nome_programa()
     exibe_opcao()
     selecina_opcao()
+    opcao_invalida()
 
 if __name__ == '__main__':
     main()
