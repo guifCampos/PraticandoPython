@@ -43,7 +43,7 @@ def selecina_opcao():
         if theChosen == 1:
             cadastrar_novo_sabor()
         elif theChosen == 2:
-            print("vc escolheu listar os sabores")
+            listagem_de_sabores()
         elif theChosen == 3:
             print("vc escolheu ativar um sabor")
         elif theChosen == 4:
@@ -74,12 +74,23 @@ def cadastrar_novo_sabor():
     input("digite qualquer tecla para voltar ao menu")
     main()
 
+#esta funcao lista todos os sabores contidos na lista
+def listagem_de_sabores():
+    os.system("cls")
+    print("listando os sabores\n")
+    #um laco de repeticao para emitir a lista de sabores
+    #caso haja itens(sabores) dentro da lista de sabores ele ira exibir os sabores 
+    for sabor in sabores:    
+        print(f">>{sabor}")
+    input("\ndigite qualquer tecla para voltar ao menu")
+    main()
+
+
 #contem todos as funcoes deste arquivo (app.py)
 def main():
     nome_programa()
     exibe_opcao()
     selecina_opcao()
-    opcao_invalida()
 
 if __name__ == '__main__':
     main()
