@@ -71,8 +71,7 @@ def cadastrar_novo_sabor():
     nome_do_sabor = input("insira o nome do novo sabor: ")
     sabores.append(nome_do_sabor)
     print(f"sabor {nome_do_sabor} adicionado ao cardapio!")
-    input("digite qualquer tecla para voltar ao menu")
-    main()
+    retorna_menu_principal()
 
 #esta funcao lista todos os sabores contidos na lista
 def listagem_de_sabores():
@@ -82,12 +81,16 @@ def listagem_de_sabores():
     #caso haja itens(sabores) dentro da lista de sabores ele ira exibir os sabores 
     for sabor in sabores:    
         print(f">>{sabor}")
+    retorna_menu_principal()
+
+#retorna para o menu principal da aplicacao
+def retorna_menu_principal():
     input("\ndigite qualquer tecla para voltar ao menu")
     main()
 
-
 #contem todos as funcoes deste arquivo (app.py)
 def main():
+    os.system("cls")
     nome_programa()
     exibe_opcao()
     selecina_opcao()
