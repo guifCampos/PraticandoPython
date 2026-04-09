@@ -1,5 +1,11 @@
 import os
 
+#dicionario com os sabores de pizza pre-estabelecidos
+sabores = [{'nome': 'Pepperoni', 'categoria': 'Salgada', 'disponibilidade': True},
+           {'nome': 'Banana Nevada', 'categoria': 'Doce', 'disponibilidade': False},
+           {'nome': 'Marguerita', 'categoria': 'Salgada', 'disponibilidade': True}
+           ]
+
 #define o nome do programa
 def nome_programa(): 
     print(
@@ -20,8 +26,6 @@ def nome_programa():
     ╚═════╝░░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░░░░░╚════╝░░╚═════╝░░╚════╝░
     """
     )
-
-sabores = []
 
 #exibe as opcoes de entrada do programa
 def exibe_opcao():
@@ -45,7 +49,7 @@ def selecina_opcao():
         elif theChosen == 2:
             listagem_de_sabores()
         elif theChosen == 3:
-            print("vc escolheu ativar um sabor")
+            alterna_disponibilidade_do_sabor()
         elif theChosen == 4:
             encerra_app()
         else:
@@ -68,19 +72,46 @@ def opcao_invalida():
 def cadastrar_novo_sabor():
     os.system("cls")
     print("cadastro de novo sabor\n")
-    nome_do_sabor = input("insira o nome do novo sabor: ")
-    sabores.append(nome_do_sabor)
-    print(f"sabor {nome_do_sabor} adicionado ao cardapio!")
+    nome_do_sabor = input("digite o nome do sabor: ")
+    categoria_sabor = input(f"digite a categoria do sabor (salgado ou doce): ")
+    dados_do_sabor = {'nome':nome_do_sabor, 'categoria':categoria_sabor, 'disponibilidade':False}
+    sabores.append(dados_do_sabor)
+    print(f"o sabor {nome_do_sabor} foi adicionado com sucesso ao cardapio")
     retorna_menu_principal()
 
 #esta funcao lista todos os sabores contidos na lista
 def listagem_de_sabores():
     os.system("cls")
     print("listando os sabores\n")
-    #um laco de repeticao para emitir a lista de sabores
-    #caso haja itens(sabores) dentro da lista de sabores ele ira exibir os sabores 
-    for sabor in sabores:    
-        print(f">>{sabor}")
+    #laco de repeticao para emitir a lista de sabores
+    #caso haja itens(sabores) dentro da lista de sabores ele ira exibir os sabores
+
+    print(f"{'SABOR'.ljust(21)} || {'CATEGORIA'.ljust(21)} || DISPONIBILIDADE")
+    for sabor in sabores:
+        nome_sabor = sabor['nome']
+        categoria_sabor = sabor['categoria']
+        disponibilidade_sabor = sabor['disponibilidade']
+        disponibilidade_sabor = 'Disponivel' if sabor['disponibilidade'] else 'Indisponivel'   
+        print(f">>{nome_sabor.ljust(19)} || {categoria_sabor.ljust(21)} || {disponibilidade_sabor}")
+    retorna_menu_principal()
+
+#alterna o estado de disponibilidade de um sabor de pizza no cardapio
+def alterna_disponibilidade_do_sabor():
+    print("alterando disponibilidade do sabor\n")
+    nome_sabor = input("digite o nome do sabor que deseja alterar a disponibilidade: ")
+    sabor_encontrado = False
+    
+    for sabor in sabores:
+        if nome_sabor == sabor['nome']:
+            sabor_encontrado = True
+            sabor['disponibilidade'] = not sabor['disponibilidade']
+            notificacao = f"o sabor {nome_sabor} ficou disponivel" if sabor['disponibilidade'] else f"o sabor {nome_sabor} nao esta disponivel"
+            print(notificacao)
+
+    #condicional para caso nao haja o sabor no cardapio
+    if not sabor_encontrado:
+        print("sabor nao encontrado no cardapio")
+
     retorna_menu_principal()
 
 #retorna para o menu principal da aplicacao
