@@ -69,7 +69,7 @@ except Exception as e:
 lista_de_numeros = [2, 6, 2, 6, 2]
 soma = 0
 
-#! exolplorar mais as possibilidades de ocorrencia de error no try except
+#! TODO: exolplorar mais as possibilidades de ocorrencia de error no try except
 try:
     for numero in lista_de_numeros:
         soma += numero
