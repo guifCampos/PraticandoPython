@@ -34,7 +34,8 @@ def exibe_opcao():
     1.Cadastrar novo sabor
     2.Listar sabores
     3.Ativar sabor
-    4.Sair
+    4.Remover sabor
+    5.Sair
     ==================================================================
     """)
 
@@ -51,6 +52,8 @@ def selecina_opcao():
         elif theChosen == 3:
             alterna_disponibilidade_do_sabor()
         elif theChosen == 4:
+            deletar_sabor()
+        elif theChosen == 5:
             encerra_app()
         else:
             opcao_invalida()
@@ -72,6 +75,7 @@ def opcao_invalida():
 def cadastrar_novo_sabor():
     os.system("cls")
     print("cadastro de novo sabor\n")
+
     nome_do_sabor = input("digite o nome do sabor: ")
     categoria_sabor = input(f"digite a categoria do sabor (salgado ou doce): ")
     dados_do_sabor = {'nome':nome_do_sabor, 'categoria':categoria_sabor, 'disponibilidade':False}
@@ -97,7 +101,9 @@ def listagem_de_sabores():
 
 #alterna o estado de disponibilidade de um sabor de pizza no cardapio
 def alterna_disponibilidade_do_sabor():
+    os.system("cls")
     print("alterando disponibilidade do sabor\n")
+
     nome_sabor = input("digite o nome do sabor que deseja alterar a disponibilidade: ")
     sabor_encontrado = False
     
@@ -109,6 +115,25 @@ def alterna_disponibilidade_do_sabor():
             print(notificacao)
 
     #condicional para caso nao haja o sabor no cardapio
+    if not sabor_encontrado:
+        print("sabor nao encontrado no cardapio")
+
+    retorna_menu_principal()
+
+#remove sabor permanentemente do cardapio
+def deletar_sabor():
+    os.system("cls")
+    print("deletando sabor do cardapio\n")
+
+    nome_sabor = input("digite o nome do sabor que deseja remover do cardapio: ")
+    sabor_encontrado = False   
+    
+    for sabor in sabores:
+        if nome_sabor == sabor['nome']:
+            sabor_encontrado = True
+            sabores.remove(sabor)
+            print(f"o sabor {nome_sabor} foi removido do cardapio")
+
     if not sabor_encontrado:
         print("sabor nao encontrado no cardapio")
 
