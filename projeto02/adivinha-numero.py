@@ -63,7 +63,7 @@ def facil():
     else:
         print(f"vc perdeu, o numero era {numeroSecreto}")
 
-    limpa()
+    #limpa()
     seleciona_dificuldade()
 
 def medio():
@@ -93,7 +93,7 @@ def medio():
     else:
         print(f"vc perdeu, o numero era {numeroSecreto}")
 
-    limpa()
+    #limpa()
     seleciona_dificuldade()
 
 def dificil():
@@ -123,7 +123,7 @@ def dificil():
     else:
         print(f"vc perdeu, o numero era {numeroSecreto}")
 
-    limpa()
+    #limpa()
     seleciona_dificuldade()
 
 def limpa():
