@@ -39,11 +39,12 @@
 #saindo do programa... ate logo!
 
 import os
+import time
 
 lista_tarefa = []
 
 def menuExibe():
-    os.system("cls")
+    limpa_tela()
     print('''
 H--------------------------H
 H>> 1)Adicionar Tarefa     H
@@ -65,11 +66,11 @@ def opcoesMenu():
         elif user_opcao == 2: #vizualizar lista de tarefas
             visualiza_tarefas()
         elif user_opcao == 3: #remover tarefa
-            pass
+            dlt_tarefa()
         elif user_opcao == 4: #buscar tarefa
-            pass
+            busca_tarefa()
         elif user_opcao == 5: #alterar status da tarefa
-            pass
+            altera_status_tarefa()
         elif user_opcao == 0: #sair/encerrar do programa
             pass
         else:
@@ -77,8 +78,8 @@ def opcoesMenu():
     except:
         pass
 
-def add_tarefa(): #nome da tarefa | prazo(curto/medio/longo) | status (concluida/pendente)
-    os.system("cls")
+def add_tarefa(): #nome da tarefa | prazo(curto/medio/longo) | status (pendente - por padrao)
+    limpa_tela()
     
     print('''
 ADICIONA TAREFA
@@ -94,7 +95,7 @@ ADICIONA TAREFA
     retorna_menu()
 
 def visualiza_tarefas():
-    os.system("cls")
+    limpa_tela()
     
     print('''LISTANDO TAREFAS
 ================
@@ -105,11 +106,83 @@ def visualiza_tarefas():
         prazo_tarefa = tarefa['prazo']
         status_tarefa = tarefa['status']
         status_tarefa = 'CONCLUIDA' if tarefa['status'] else 'PENDENTE'
-
         print(f">>{nome_tarefa.ljust(9)} | {prazo_tarefa.ljust(9)} | {status_tarefa}")
     
     retorna_menu()
 
+def dlt_tarefa():
+    limpa_tela()
+
+    print('''DELETANDO TAREFA
+================
+''')
+
+    nome_tarefa = input("qual a tarefa que deseja remover da lista? ")
+    tarefa_encontrada = False
+
+    for tarefa in lista_tarefa:
+        if nome_tarefa == tarefa['tarefa']:
+            tarefa_encontrada = True
+            
+            decisao =input("voce deseja desistir de cumprir esta tarefa? vai arregar mesmo?(sim/nao) ")
+            if decisao == "sim":
+                lista_tarefa.remove(tarefa)
+                print("sua tarefa foi removida. voce arregou, guerreiro. que decepcao.")
+                retorna_menu()
+            elif decisao == "nao":
+                print("sua tarefa nao sera removida. parabens por nao desistir, guerreiro. orgulho de ti.")
+                retorna_menu()
+            else:
+                print("insira uma resposta valida (sim/nao)")
+                time.sleep(3)
+                dlt_tarefa()
+
+    if not tarefa_encontrada:
+        print("nao ha a tarefa mencionada.\n")
+        time.sleep(2)
+        decisao2 = input("deseja tentar deletar outra tarefa? ")
+        if decisao2 == "sim":
+            dlt_tarefa()
+        elif decisao2 == "nao":
+            retorna_menu()
+
+def busca_tarefa():
+    pass
+
+
+def altera_status_tarefa():
+    limpa_tela()
+
+    print('''ALTERANDO STATUS DA TAREFA
+================
+''')
+    
+    nome_tarefa = input("qual tarefa voce deseja alterar o status? ")
+    tarefa_encontrada = False
+
+    for tarefa in lista_tarefa:
+        if nome_tarefa == tarefa['tarefa']:
+            tarefa_encontrada = True
+            tarefa['status'] = not tarefa['status']
+            print(f"a tarefa {nome_tarefa} teve o status dela alterado")
+            retorna_menu()
+
+    if not tarefa_encontrada:
+        print("nao ha a tarefa mencionada.\n")
+        time.sleep(2)
+        decisao2 = input("deseja tentar alterar outra tarefa? ")
+        if decisao2 == "sim":
+            altera_status_tarefa()
+        elif decisao2 == "nao":
+            retorna_menu()
+
+def opcao_invalida():
+    print("opcao invalida")
+    input("tecle qualquer coisa para voltar\n" + "\n")
+    main()
+
+def limpa_tela():
+    os.system("cls")
 
 def retorna_menu():
     input("\ntecle ENTER para voltar ao menu")
