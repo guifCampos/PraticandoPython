@@ -72,9 +72,9 @@ def opcoesMenu():
         elif user_opcao == 5: #alterar status da tarefa
             altera_status_tarefa()
         elif user_opcao == 0: #sair/encerrar do programa
-            pass
+            encerra_programa()
         else:
-            pass
+            opcao_invalida()
     except:
         pass
 
@@ -147,7 +147,32 @@ def dlt_tarefa():
             retorna_menu()
 
 def busca_tarefa():
-    pass
+    limpa_tela()
+
+    print('''BUSCANDO TAREFA
+================
+''')
+
+    nome_tarefa = input("qual/quais tarefas voce esta procurando? ")
+    tarefa_encontrada = False
+
+    for tarefa in lista_tarefa:
+        if nome_tarefa in tarefa['tarefa']: 
+            print(f">>{tarefa['tarefa']} | {tarefa['status']}")
+            tarefa_encontrada = True
+            
+    if tarefa_encontrada == False:
+        print(f"nao foram encontradas tarefas com esse nome: {nome_tarefa}")
+        time.sleep(2)
+
+        decisao3 = input("deseja buscar por outra tarefa? ")
+
+        if decisao3 == "sim":
+            busca_tarefa()
+        elif decisao3 == "nao":
+            retorna_menu()
+
+    retorna_menu()
 
 
 def altera_status_tarefa():
@@ -176,9 +201,13 @@ def altera_status_tarefa():
         elif decisao2 == "nao":
             retorna_menu()
 
+def encerra_programa():
+    limpa_tela()
+    print("saindo...")
+
 def opcao_invalida():
     print("opcao invalida")
-    input("tecle qualquer coisa para voltar\n" + "\n")
+    input("tecle ENTER para voltar\n" + "\n")
     main()
 
 def limpa_tela():
