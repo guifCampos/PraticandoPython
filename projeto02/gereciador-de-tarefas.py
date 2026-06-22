@@ -158,7 +158,8 @@ def busca_tarefa():
 
     for tarefa in lista_tarefa:
         if nome_tarefa in tarefa['tarefa']: 
-            print(f">>{tarefa['tarefa']} | {tarefa['status']}")
+            status_tarefa = 'CONCLUIDA' if tarefa['status'] else 'PENDENTE'
+            print(f">>{tarefa['tarefa']} | {status_tarefa}")
             tarefa_encontrada = True
             
     if tarefa_encontrada == False:
